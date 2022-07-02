@@ -1,0 +1,11 @@
+@import "../../variables";
+
+.forecast {
+    display: flex;
+    width: 100%;
+    min-height: 400px;
+    background-color: $color-blue-bg;
+    border: 8px solid white;
+    border-radius: 10px;
+    box-shadow: rgba(170, 170, 170, 0.2) 0px 10px 12px 12px;
+}

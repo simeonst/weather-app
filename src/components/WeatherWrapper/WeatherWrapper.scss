@@ -1,0 +1,12 @@
+.weather-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 2.5rem auto;
+  max-width: 40rem;
+}
+
+.locations {
+  display: flex;
+  margin-bottom: 2rem;
+  justify-content: space-evenly;
+}
