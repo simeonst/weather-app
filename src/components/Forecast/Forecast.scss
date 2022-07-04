@@ -1,15 +1,13 @@
 @import "../../styles/variables";
 @import "../../styles/mixins";
 
-.forecast {
-    display: flex;
-    flex-direction: column;
+.forecast--loading {
     width: 100%;
-    background-color: $color-white;
-    border: $gutter-size solid $color-white;
+    height: 460px;
     border-radius: $border-radius;
-    box-shadow: rgba(170, 170, 170, 0.2) 0px 10px 12px 12px;
+    background-color: $color-bg-blue;
     text-align: center;
+    line-height: 100px;
 }
 
 .current {

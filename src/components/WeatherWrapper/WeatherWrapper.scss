@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .weather-wrapper {
   display: flex;
   flex-direction: column;
@@ -12,4 +14,16 @@
   margin-bottom: 2rem;
   justify-content: space-evenly;
   text-transform: uppercase;
+}
+
+.forecast {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 474px;
+  background-color: $color-white;
+  border: $gutter-size solid $color-white;
+  border-radius: $border-radius;
+  box-shadow: rgba(170, 170, 170, 0.2) 0px 10px 12px 12px;
+  text-align: center;
 }

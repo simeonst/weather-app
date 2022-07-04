@@ -9,8 +9,11 @@ import snow from "../../assets/icons/snow.png";
 import sun from "../../assets/icons/sun.png";
 import thunderstorm from "../../assets/icons/thunderstorm.png";
 
-const getIcon = (code) => {
+const getIcon = (code, isToday, isNight) => {
   if (code === 800) {
+    if (isToday && isNight) {
+      return moon;
+    }
     return sun;
   }
 
@@ -58,8 +61,12 @@ Icon.propTypes = {
   weather: PropTypes.string.isRequired,
   code: PropTypes.number.isRequired,
   size: PropTypes.oneOf(["sm", "lg"]),
+  isToday: PropTypes.bool,
+  isNight: PropTypes.bool,
 };
 
 Icon.defaultProps = {
   size: "lg",
+  isToday: false,
+  isNight: false,
 };

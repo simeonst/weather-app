@@ -48,12 +48,14 @@ export default class WeatherWrapper extends Component {
           <span>Moscow</span>
           <span>Tokyo</span>
         </div>
-        <Forecast
-          loading={loading}
-          error={error}
-          current={data.current}
-          daily={data.daily}
-        />
+        <div className="forecast">
+          <Forecast
+            loading={loading}
+            error={error}
+            current={data.current}
+            daily={data.daily}
+          />
+        </div>
       </div>
     );
   }
