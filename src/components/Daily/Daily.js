@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import Icon from "../Icon/Icon";
 import "./Daily.scss";
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -25,23 +26,21 @@ export default class Daily extends Component {
   render() {
     const { nextDays } = this.state;
     const { daily } = this.props;
-    console.log(daily);
-
-    if (!nextDays.length) {
-      return <div>Loading...</div>;
-    }
 
     return (
       <div className="daily">
         {nextDays.map((day, i) => {
           const dayData = daily?.[i + 1];
+          const weatherCode = dayData?.weather?.[0]?.id;
           const dayWeather = dayData?.weather?.[0]?.main;
           const dayTemp = dayData?.temp?.day;
 
           return (
-            <div className="day">
+            <div className="day" key={day}>
               <span>{day}</span>
-              {dayWeather && <span>{dayWeather}</span>}
+              {weatherCode && (
+                <Icon weather={dayWeather} code={weatherCode} size="sm" />
+              )}
               {dayTemp && <span>{Math.round(dayTemp)}°</span>}
             </div>
           );
@@ -52,5 +51,5 @@ export default class Daily extends Component {
 }
 
 Daily.propTypes = {
-  daily: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  daily: PropTypes.arrayOf(PropTypes.shape({})),
 };

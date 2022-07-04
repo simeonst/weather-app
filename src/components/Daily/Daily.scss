@@ -14,9 +14,10 @@
 .day {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width: 100%;
     min-height: 150px;
+    justify-content: space-evenly;
+    align-items: center;
     margin-right: $gutter-size;
     background-color: $color-bg-blue;
 
