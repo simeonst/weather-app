@@ -1,0 +1,44 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.daily {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+
+    @include breakpoint {
+        flex-direction: column;
+    }
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 150px;
+    margin-right: $gutter-size;
+    background-color: $color-bg-blue;
+
+    @include breakpoint {
+        margin-bottom: $gutter-size;
+    }
+}
+
+.day:first-child {
+   border-bottom-left-radius: $border-radius;
+
+   @include breakpoint {
+    border-bottom-left-radius: 0;
+   }
+}
+
+.day:last-child {
+    margin-right: 0;
+    border-bottom-right-radius: $border-radius;
+
+    @include breakpoint {
+        border-bottom-left-radius: $border-radius;
+        margin-bottom: 0;
+    }
+}

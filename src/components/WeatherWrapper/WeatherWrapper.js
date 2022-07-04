@@ -12,7 +12,7 @@ export default class WeatherWrapper extends Component {
       },
       data: [],
       loading: true,
-      error: false,
+      error: "",
     };
   }
 
@@ -40,6 +40,7 @@ export default class WeatherWrapper extends Component {
   }
 
   render() {
+    const { data, loading, error } = this.state;
     return (
       <div className="weather-wrapper">
         <div className="locations">
@@ -47,7 +48,12 @@ export default class WeatherWrapper extends Component {
           <span>Moscow</span>
           <span>Tokyo</span>
         </div>
-        <Forecast />
+        <Forecast
+          loading={loading}
+          error={error}
+          current={data.current}
+          daily={data.daily}
+        />
       </div>
     );
   }
