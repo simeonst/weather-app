@@ -47,11 +47,9 @@ const getIcon = (code, isToday, isNight) => {
 
 export default class Icon extends Component {
   render() {
-    const { size } = this.props;
+    const { size, code, weather, isNight, isToday } = this.props;
     const imgSize = size === "lg" ? "150px" : "75px";
-
-    const { code, weather } = this.props;
-    const iconSrc = getIcon(code);
+    const iconSrc = getIcon(code, isToday, isNight);
 
     return <img src={iconSrc} width={imgSize} height={imgSize} alt={weather} />;
   }

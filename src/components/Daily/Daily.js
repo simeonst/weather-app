@@ -33,7 +33,7 @@ export default class Daily extends Component {
           const dayData = daily?.[i + 1];
           const weatherCode = dayData?.weather?.[0]?.id;
           const dayWeather = dayData?.weather?.[0]?.main;
-          const dayTemp = dayData?.temp?.day;
+          const dayTemp = dayData?.temp?.max;
 
           return (
             <div className="day" key={day}>

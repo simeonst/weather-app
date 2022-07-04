@@ -11,8 +11,8 @@ export default class Current extends Component {
     const weather = current?.weather?.[0]?.main;
     const code = current?.weather?.[0]?.id;
 
-    const { dt, sunrise, sunset } = current?.dt;
-    const isNight = dt > sunrise && dt < sunset;
+    const { dt, sunrise, sunset } = current;
+    const isNight = dt < sunrise || dt > sunset;
 
     return (
       <div className="current">
