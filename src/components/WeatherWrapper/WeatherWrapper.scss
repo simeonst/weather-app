@@ -43,3 +43,17 @@ $min-card-height: 474px;
     min-height: 950px;
   }
 }
+
+.city {
+  font-size: 25px;
+  font-weight: 400;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &--selected {
+    color: $color-text-blue;
+    font-weight: 600;
+  }
+} 

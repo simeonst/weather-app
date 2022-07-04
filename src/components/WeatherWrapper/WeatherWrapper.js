@@ -31,19 +31,10 @@ export default class WeatherWrapper extends Component {
 
   async componentDidMount() {
     const { selectedCity } = this.state;
-    const { lat, lon } = coordinates[selectedCity];
-    const exclude = "minutely,hourly,alerts";
 
     try {
-      const url = `${process.env.REACT_APP_API_URL}/onecall?lat=${lat}&lon=${lon}&exclude=${exclude}&units=metric&appid=${process.env.REACT_APP_API_KEY}`;
-      const response = await fetch(url);
-
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-
-      const json = await response.json();
-      this.setState({ loading: false, data: json });
+      const data = await this.fetchWeatherData(selectedCity);
+      this.setState({ loading: false, data: data });
     } catch (error) {
       console.log(error);
       this.setState({
@@ -57,19 +48,10 @@ export default class WeatherWrapper extends Component {
     const { selectedCity } = this.state;
     if (newCity !== selectedCity) {
       this.setState({ loading: true, error: "" });
-      const { lat, lon } = coordinates[newCity];
-      const exclude = "minutely,hourly,alerts";
 
       try {
-        const url = `${process.env.REACT_APP_API_URL}/onecall?lat=${lat}&lon=${lon}&exclude=${exclude}&units=metric&appid=${process.env.REACT_APP_API_KEY}`;
-        const response = await fetch(url);
-
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-
-        const json = await response.json();
-        this.setState({ loading: false, data: json, selectedCity: newCity });
+        const data = await this.fetchWeatherData(newCity);
+        this.setState({ loading: false, data: data, selectedCity: newCity });
       } catch (error) {
         console.log(error);
         this.setState({
@@ -78,12 +60,24 @@ export default class WeatherWrapper extends Component {
         });
       }
     }
+  };
 
-    return;
+  fetchWeatherData = async (selectedCity) => {
+    const { lat, lon } = coordinates[selectedCity];
+    const exclude = "minutely,hourly,alerts";
+    const url = `${process.env.REACT_APP_API_URL}/onecall?lat=${lat}&lon=${lon}&exclude=${exclude}&units=metric&appid=${process.env.REACT_APP_API_KEY}`;
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+
+    const json = await response.json();
+    return json;
   };
 
   render() {
-    const { data, loading, error } = this.state;
+    const { data, loading, error, selectedCity } = this.state;
     const { current, daily } = data;
 
     const renderForecast = () => {
@@ -114,9 +108,24 @@ export default class WeatherWrapper extends Component {
     return (
       <div className="weather-wrapper">
         <div className="locations">
-          <span onClick={() => this.handleCityClick("VAN")}>Vancouver</span>
-          <span onClick={() => this.handleCityClick("TOR")}>Toronto</span>
-          <span onClick={() => this.handleCityClick("BEL")}>Belgrade</span>
+          <span
+            className={`city ${selectedCity === "VAN" ? "city--selected" : ""}`}
+            onClick={() => this.handleCityClick("VAN")}
+          >
+            Vancouver
+          </span>
+          <span
+            className={`city ${selectedCity === "TOR" ? "city--selected" : ""}`}
+            onClick={() => this.handleCityClick("TOR")}
+          >
+            Toronto
+          </span>
+          <span
+            className={`city ${selectedCity === "BEL" ? "city--selected" : ""}`}
+            onClick={() => this.handleCityClick("BEL")}
+          >
+            Belgrade
+          </span>
         </div>
         <div className="forecast">{renderForecast()}</div>
       </div>
