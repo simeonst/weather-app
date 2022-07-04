@@ -1,7 +1,7 @@
 @import "../../styles/variables";
 @import "../../styles/mixins";
 
-.daily {
+.days {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
@@ -9,37 +9,48 @@
     @include breakpoint {
         flex-direction: column;
     }
-}
 
-.day {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-height: 150px;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-right: $gutter-size;
-    background-color: $color-bg-blue;
-
-    @include breakpoint {
-        margin-bottom: $gutter-size;
+    &__name {
+        margin: 10px 0;
     }
-}
 
-.day:first-child {
-   border-bottom-left-radius: $border-radius;
+    &__temp {
+        margin: 10px 0;
+        font-weight: 600;
+        font-size: 25px;
+    }
+    
+    &__day {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 175px;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-right: $gutter-size;
+        background-color: $color-bg-blue;
+        font-size: 20px;
+    
+        @include breakpoint {
+            margin-bottom: $gutter-size;
+        }
 
-   @include breakpoint {
-    border-bottom-left-radius: 0;
-   }
-}
+        &:first-child {
+            border-bottom-left-radius: $border-radius;
+         
+            @include breakpoint {
+             border-bottom-left-radius: 0;
+            }
+         }
 
-.day:last-child {
-    margin-right: 0;
-    border-bottom-right-radius: $border-radius;
-
-    @include breakpoint {
-        border-bottom-left-radius: $border-radius;
-        margin-bottom: 0;
+         &:last-child {
+            margin-right: 0;
+            border-bottom-right-radius: $border-radius;
+        
+            @include breakpoint {
+                border-bottom-left-radius: $border-radius;
+                margin-bottom: 0;
+            }
+        }
     }
 }

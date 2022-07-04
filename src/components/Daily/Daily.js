@@ -28,7 +28,7 @@ export default class Daily extends Component {
     const { daily } = this.props;
 
     return (
-      <div className="daily">
+      <div className="days">
         {nextDays.map((day, i) => {
           const dayData = daily?.[i + 1];
           const weatherCode = dayData?.weather?.[0]?.id;
@@ -36,12 +36,14 @@ export default class Daily extends Component {
           const dayTemp = dayData?.temp?.max;
 
           return (
-            <div className="day" key={day}>
-              <span>{day}</span>
+            <div className="days__day" key={day}>
+              <span className="days__name">{day}</span>
               {weatherCode && (
                 <Icon weather={dayWeather} code={weatherCode} size="sm" />
               )}
-              {dayTemp && <span>{Math.round(dayTemp)}°</span>}
+              {dayTemp && (
+                <span className="days__temp">{Math.round(dayTemp)}°</span>
+              )}
             </div>
           );
         })}

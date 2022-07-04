@@ -17,12 +17,12 @@ export default class Current extends Component {
     return (
       <div className="current">
         Today
-        <div className="current-icon-wrap">
+        <div className="current__row">
           {weather && (
             <Icon weather={weather} code={code} isNight={isNight} isToday />
           )}
-          <div className="current-data">
-            {temp && <span>{Math.round(temp)}°</span>}
+          <div className="current__data">
+            {temp && <span className="current__temp">{Math.round(temp)}°</span>}
             {weather && <span>{weather}</span>}
           </div>
         </div>
