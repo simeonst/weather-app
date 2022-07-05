@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Forecast from "../Current/Current";
 import Daily from "../Daily/Daily";
+import Spinner from "../Spinner/Spinner";
 import "./WeatherWrapper.scss";
 
 const coordinates = {
@@ -84,7 +85,7 @@ export default class WeatherWrapper extends Component {
       if (loading) {
         return (
           <div className="info">
-            <span>Loading...</span>
+            <Spinner />
           </div>
         );
       }
