@@ -37,9 +37,8 @@ export default class WeatherWrapper extends Component {
       const data = await this.fetchWeatherData(selectedCity);
       this.setState({ loading: false, data: data });
     } catch (error) {
-      console.log(error);
       this.setState({
-        error: "Whoops, something went wrong, please try again later",
+        error: "Error loading weather, please try again later",
         loading: false,
       });
     }
@@ -54,9 +53,8 @@ export default class WeatherWrapper extends Component {
         const data = await this.fetchWeatherData(newCity);
         this.setState({ loading: false, data: data, selectedCity: newCity });
       } catch (error) {
-        console.log(error);
         this.setState({
-          error: "Whoops, something went wrong, please try again later",
+          error: "Error loading weather, please try again later",
           loading: false,
         });
       }
