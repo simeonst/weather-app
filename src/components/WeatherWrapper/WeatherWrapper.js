@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Forecast from "../Current/Current";
 import Daily from "../Daily/Daily";
+import Spinner from "../Spinner/Spinner";
 import "./WeatherWrapper.scss";
 
 const coordinates = {
@@ -36,9 +37,8 @@ export default class WeatherWrapper extends Component {
       const data = await this.fetchWeatherData(selectedCity);
       this.setState({ loading: false, data: data });
     } catch (error) {
-      console.log(error);
       this.setState({
-        error: "Whoops, something went wrong, please try again later",
+        error: "Error loading weather, please try again later",
         loading: false,
       });
     }
@@ -53,9 +53,8 @@ export default class WeatherWrapper extends Component {
         const data = await this.fetchWeatherData(newCity);
         this.setState({ loading: false, data: data, selectedCity: newCity });
       } catch (error) {
-        console.log(error);
         this.setState({
-          error: "Whoops, something went wrong, please try again later",
+          error: "Error loading weather, please try again later",
           loading: false,
         });
       }
@@ -84,7 +83,7 @@ export default class WeatherWrapper extends Component {
       if (loading) {
         return (
           <div className="info">
-            <span>Loading...</span>
+            <Spinner />
           </div>
         );
       }

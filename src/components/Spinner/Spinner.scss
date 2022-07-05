@@ -1,0 +1,25 @@
+@import "../../styles/variables";
+
+.spinner {
+    position: relative;
+    left: -9999px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: $color-text-blue;
+    color: $color-text-blue;
+    box-shadow: 9984px 0 0 0 $color-text-blue, 9999px 0 0 0 $color-text-blue, 10014px 0 0 0 $color-text-blue;
+    animation: spinner 1.5s infinite linear;
+  }
+  
+  @keyframes spinner {
+    0% {
+      box-shadow: 9984px 0 0 -1px $color-text-blue, 9999px 0 0 1px $color-text-blue, 10014px 0 0 -1px $color-text-blue;
+    }
+    50% {
+      box-shadow: 10014px 0 0 -1px $color-text-blue, 9984px 0 0 -1px $color-text-blue, 9999px 0 0 1px $color-text-blue;
+    }
+    100% {
+      box-shadow: 9999px 0 0 1px $color-text-blue, 10014px 0 0 -1px $color-text-blue, 9984px 0 0 -1px $color-text-blue;
+    }
+  }
